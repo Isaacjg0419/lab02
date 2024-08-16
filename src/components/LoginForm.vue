@@ -1,6 +1,6 @@
 <template>
-    <div class="container mt-5 d-flex justify-content-center">
-        <div class="row w-100">
+    <div class="mt-5 d-flex justify-content-center">
+        <div class="row">
             <div class="col-md-8 offset-md-2">
                 <h1 class="text-center">User Information Form</h1>
                 <form @submit.prevent="submitForm">
@@ -43,8 +43,7 @@
                     </div>
                     <div class="row mt-5" v-if="submittedCards.length">
                         <div class="d-flex flex-wrap justify-content-start">
-                            <div v-for="(card, index) in submittedCards" :key="index" class="card m-2"
-                                style="width: 18rem;">
+                            <div v-for="(card, index) in submittedCards" :key="index" class="card">
                                 <div class="card-header">
                                     User Information
                                 </div>
@@ -83,7 +82,6 @@ const submitForm = () => {
         ...formData.value
     });
 };
-
 const clearForm = () => {
     formData.value = {
         username: '',
@@ -100,7 +98,25 @@ const clearForm = () => {
 h1 {
     text-align: center;
     margin-top: 20px;
-    /* text-shadow: 4px 4px 8px rgba(0, 0, 0, 0.5); */
+}
+
+.card {
+    border: 1px solid #ccc;
+    border-radius: 10px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    margin: 10px;
+    flex: 1 1 200px;
+}
+
+.card-header {
+    background-color: #275FDA;
+    color: white;
+    padding: 10px;
+    border-radius: 10px 10px 0 0;
+}
+
+.list-group-item {
+    padding: 10px;
 }
 
 /* Class selectors */
@@ -115,14 +131,18 @@ h1 {
 #isAustralian:focus,
 #reason:focus {
     border-color: #FF6347;
-    /* More obvious border color change (Tomato) */
     background-color: #FFEBE8;
-    /* Light background color change */
 }
 
 /* Attribute selectors */
 select[id="gender"] {
     background-color: #d3d3d3;
-    /* Default background color set to gray */
+}
+
+/* Flexbox styles for card container */
+.d-flex {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1rem;
 }
 </style>
